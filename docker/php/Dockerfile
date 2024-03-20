@@ -5,6 +5,7 @@ RUN set -eux; \
     apt-get upgrade -y; \
     apt-get install -y --no-install-recommends \
             curl \
+            unzip \
             libmemcached-dev \
             libz-dev \
             libpq-dev \
@@ -16,7 +17,8 @@ RUN set -eux; \
             libxpm-dev \
             libmcrypt-dev \
             libonig-dev \
-            libicu-dev; \
+            libicu-dev \
+            librabbitmq-dev; \
     rm -rf /var/lib/apt/lists/*
 
 RUN set -eux; \
@@ -32,7 +34,9 @@ RUN set -eux; \
             --with-xpm \
             --with-freetype; \
     docker-php-ext-install gd; \
-    docker-php-ext-install intl;
+    docker-php-ext-install intl; \
+    pecl install amqp; \
+    docker-php-ext-enable amqp;
 
 # Install Composer
 RUN set -eux; \

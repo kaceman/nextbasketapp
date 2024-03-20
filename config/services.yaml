@@ -20,5 +20,9 @@ services:
             - '../src/Entity/'
             - '../src/Kernel.php'
 
+    App\MessageHandler\UserCreatedMessageHandler:
+        arguments:
+            $logFilePath: '%env(resolve:MESSENGER_LOG_FILE_PATH)%'
+
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
