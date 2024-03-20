@@ -1,4 +1,4 @@
-# Technical test
+# Technical test (Symfony 7.05)
 
 ## Setting up the project
 
@@ -25,9 +25,6 @@ curl --location 'localhost/users' \
 ```
 ## Tools
 
-<p>
 RabbitMQ Dashboard is accessible here : http://localhost:15672/ (user: guest, pass: guest)
-</p>
-<p>
+
 Adminer is accessible here : http://localhost:8080/
-</p>
