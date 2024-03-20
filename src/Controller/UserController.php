@@ -18,10 +18,14 @@ class UserController extends AbstractController
     {
         $data = json_decode($request->getContent(), true);
 
-        $user = new User();
-        $user->setEmail($data['email']);
-        $user->setFirstName($data['firstName']);
-        $user->setLastName($data['lastName']);
+        try {
+            $user = new User();
+            $user->setEmail($data['email']);
+            $user->setFirstName($data['firstName']);
+            $user->setLastName($data['lastName']);
+        } catch (\Exception $e) {
+            return $this->json(['error' => 'Invalid data provided'], Response::HTTP_BAD_REQUEST);
+        }
 
         $entityManager->persist($user);
         $entityManager->flush();
